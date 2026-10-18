@@ -4,6 +4,8 @@
   "description": "High-performance TypeScript/Node.js scraper for anime-indo.lol",
   "main": "dist/index.js",
   "type": "module",
+  "homepage": "https://zeltoria.web.id",
+  "author": "Zeltoria Aevryns (https://zeltoria.web.id)",
   "scripts": {
     "start": "tsx src/cli.ts",
     "build": "tsc",
@@ -14,9 +16,19 @@
     "scrape:updates": "tsx src/cli.ts --updates",
     "summary": "tsx src/cli.ts --summary"
   },
-  "keywords": ["anime", "scraper", "typescript", "nodejs"],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "anime",
+    "anime-scraper",
+    "anime-api",
+    "animeindo",
+    "cheerio",
+    "crawler",
+    "nodejs",
+    "scraper",
+    "sqlite",
+    "typescript"
+  ],
+  "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0"
   },

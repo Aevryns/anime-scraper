@@ -5,6 +5,7 @@
 [![Node.js](https://img.shields.io/badge/Node.js-24%2B-green?logo=node.js)](https://nodejs.org/)
 [![Database](https://img.shields.io/badge/SQLite-node%3Asqlite-lightgrey?logo=sqlite)](https://nodejs.org/api/sqlite.html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Website](https://img.shields.io/badge/website-zeltoria.web.id-007acc?logo=googlechrome&logoColor=white)](https://zeltoria.web.id)
 
 > **High-performance, complete web scraper and structured data extractor for [anime-indo.lol](https://anime-indo.lol/).**  
 > Mengambil seluruh katalog anime (4.635+ judul), detail lengkap (sinopsis, poster resolusi penuh, genre tags), 56.500+ link episode, 605 movie (41 halaman), 93 genre, episode rilis terkini, serta tautan video stream (embed player) dan direct download link.
@@ -156,5 +157,10 @@ Database disimpan di [`data/anime_indo.db`](./data/anime_indo.db) dengan tabel-t
 
 ---
 
+## 🌐 Website Resmi
+Website: [https://zeltoria.web.id](https://zeltoria.web.id)
+
+---
+
 ## 📄 Lisensi
-[MIT License](LICENSE) © 2026 [Aevryns](https://github.com/Aevryns)
+[MIT License](LICENSE) © 2026 [Zeltoria Aevryns](https://zeltoria.web.id)
