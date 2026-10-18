@@ -103,6 +103,8 @@ export function validateRawStreamQuality(item: Partial<RawStreamQuality>): RawSt
   const rawStreamUrl = cleanText(item.rawStreamUrl);
   const resolution = cleanText(item.resolution);
   const height = Number(item.height);
+  const format = item.format === "mp4" ? "mp4" : "hls";
+  const isDirectPlayable = item.isDirectPlayable !== undefined ? Boolean(item.isDirectPlayable) : format === "mp4";
 
   if (!quality || !rawStreamUrl || !rawStreamUrl.startsWith("http")) {
     return null;
@@ -112,8 +114,10 @@ export function validateRawStreamQuality(item: Partial<RawStreamQuality>): RawSt
     quality,
     resolution: resolution || `${height}p`,
     height: isNaN(height) ? 0 : height,
+    format,
     bandwidth: item.bandwidth ? Number(item.bandwidth) : undefined,
     rawStreamUrl,
+    isDirectPlayable,
   };
 }
 
@@ -121,6 +125,7 @@ export function validateDracinemaPlayback(item: Partial<DracinemaPlayback>): Dra
   const movieKey = cleanText(item.movieKey);
   const episode = Number(item.episode);
   const masterPlaylistUrl = cleanText(item.masterPlaylistUrl);
+  const videoFormat = item.videoFormat === "mp4" ? "mp4" : "hls";
 
   if (!movieKey || isNaN(episode) || episode <= 0 || !masterPlaylistUrl) {
     return null;
@@ -140,6 +145,9 @@ export function validateDracinemaPlayback(item: Partial<DracinemaPlayback>): Dra
     movieName: cleanText(item.movieName) || movieKey,
     cover: cleanText(item.cover),
     chapterName: cleanText(item.chapterName) || `Episode ${episode}`,
+    videoFormat,
+    directMp4Url: item.directMp4Url ? cleanText(item.directMp4Url) : undefined,
+    webPlayerUrl: cleanText(item.webPlayerUrl) || `https://www.dracinema.com/play/${movieKey}/${episode}`,
     masterPlaylistUrl,
     rawStreams: validStreams,
     rawSubtitleUrl: item.rawSubtitleUrl ? cleanText(item.rawSubtitleUrl) : undefined,

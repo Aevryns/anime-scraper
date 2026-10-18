@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import * as cheerio from "cheerio";
 import { BaseScraper, DEFAULT_USER_AGENT } from "../../core/index.js";
 import {
@@ -8,6 +10,8 @@ import {
   DracinemaPlayback,
   DracinemaSearchResult,
   RawStreamQuality,
+  VideoFormatType,
+  DownloadResult,
 } from "./models.js";
 import { DracinemaStorage } from "./storage.js";
 import {
@@ -349,7 +353,7 @@ export class DracinemaScraper extends BaseScraper {
 
   public async getPlaybackStream(movieKey: string, episode: number = 1): Promise<DracinemaPlayback | null> {
     const cleanMovieKey = movieKey.replace(/^\/+|\/+$/g, "").split("/").pop() || movieKey;
-    const playUrl = `${this.baseUrl}/play/${cleanMovieKey}`;
+    const playUrl = `${this.baseUrl}/play/${cleanMovieKey}/${episode}`;
 
     try {
       const res = await fetch(`${this.baseUrl}/api/playback`, {
@@ -382,74 +386,115 @@ export class DracinemaScraper extends BaseScraper {
       const data = payload?.data || {};
       const detail = data?.detail || {};
       const meta = data?.meta || {};
-      const videoItems = detail?.videoUrls || [];
+      const videoItems: Array<{ quality?: number; url?: string; cdn?: string }> = detail?.videoUrls || [];
+      if (!videoItems.length) return null;
+
       const primaryVideo = videoItems[0] || {};
-      const masterPlaylistUrl = cleanText(primaryVideo.url || "");
+      const firstUrl = cleanText(primaryVideo.url || "");
+      if (!firstUrl) return null;
 
-      if (!masterPlaylistUrl) return null;
+      // Check whether streams are direct MP4 (e.g. pd_, ml_, ext_, etc.) or HLS M3U8
+      const isDirectMp4 = videoItems.some((v) => {
+        const u = (v.url || "").toLowerCase();
+        return u.includes(".mp4") || u.includes("mime_type=video_mp4");
+      });
 
-      // Parse master m3u8 playlist into raw individual streams
+      const videoFormat: VideoFormatType = isDirectMp4 ? "mp4" : "hls";
       const rawStreams: RawStreamQuality[] = [];
-      try {
-        const masterContent = await this.fetchText(masterPlaylistUrl);
-        if (masterContent && masterContent.includes("#EXT-X-STREAM-INF:")) {
-          const lines = masterContent.split(/\r?\n/);
-          for (let i = 0; i < lines.length; i++) {
-            const line = lines[i].trim();
-            if (line.startsWith("#EXT-X-STREAM-INF:")) {
-              const resMatch = line.match(/RESOLUTION=(\d+)x(\d+)/i);
-              const bwMatch = line.match(/BANDWIDTH=(\d+)/i);
+      let directMp4Url: string | undefined;
 
-              let width = 0;
-              let height = 0;
-              let resolution = "unknown";
-              if (resMatch) {
-                width = parseInt(resMatch[1], 10);
-                height = parseInt(resMatch[2], 10);
-                resolution = `${width}x${height}`;
-              }
+      if (videoFormat === "mp4") {
+        for (const v of videoItems) {
+          const streamUrl = cleanText(v.url || "");
+          if (!streamUrl) continue;
+          const height = Number(v.quality) || 720;
+          const resolution =
+            height >= 1080
+              ? "1920x1080"
+              : height >= 720
+              ? "1280x720"
+              : height >= 540
+              ? "960x540"
+              : height >= 480
+              ? "854x480"
+              : "640x360";
 
-              const dimension = Math.max(width, height);
-              let effectiveHeight = height;
-              if (dimension >= 1920) effectiveHeight = 1080;
-              else if (dimension >= 1280) effectiveHeight = 720;
-              else if (dimension >= 960) effectiveHeight = 540;
-              else if (dimension >= 854) effectiveHeight = 480;
-              else if (dimension >= 640) effectiveHeight = 360;
-              else if (dimension >= 426) effectiveHeight = 240;
+          rawStreams.push({
+            quality: `${height}p`,
+            resolution,
+            height,
+            format: "mp4",
+            rawStreamUrl: streamUrl,
+            isDirectPlayable: true,
+          });
+        }
+        rawStreams.sort((a, b) => b.height - a.height);
+        directMp4Url = rawStreams[0]?.rawStreamUrl;
+      } else {
+        // HLS M3U8 stream: parse master playlist into individual quality sub-playlists
+        const masterPlaylistUrl = firstUrl;
+        try {
+          const masterContent = await this.fetchText(masterPlaylistUrl);
+          if (masterContent && masterContent.includes("#EXT-X-STREAM-INF:")) {
+            const lines = masterContent.split(/\r?\n/);
+            for (let i = 0; i < lines.length; i++) {
+              const line = lines[i].trim();
+              if (line.startsWith("#EXT-X-STREAM-INF:")) {
+                const resMatch = line.match(/RESOLUTION=(\d+)x(\d+)/i);
+                const bwMatch = line.match(/BANDWIDTH=(\d+)/i);
 
-              const quality = `${effectiveHeight}p`;
+                let width = 0;
+                let height = 0;
+                let resolution = "unknown";
+                if (resMatch) {
+                  width = parseInt(resMatch[1], 10);
+                  height = parseInt(resMatch[2], 10);
+                  resolution = `${width}x${height}`;
+                }
 
-              const nextLine = lines[i + 1]?.trim();
-              if (nextLine && !nextLine.startsWith("#")) {
-                const rawStreamUrl = nextLine.startsWith("http")
-                  ? nextLine
-                  : new URL(nextLine, masterPlaylistUrl).href;
+                const dimension = Math.max(width, height);
+                let effectiveHeight = height;
+                if (dimension >= 1920) effectiveHeight = 1080;
+                else if (dimension >= 1280) effectiveHeight = 720;
+                else if (dimension >= 960) effectiveHeight = 540;
+                else if (dimension >= 854) effectiveHeight = 480;
+                else if (dimension >= 640) effectiveHeight = 360;
+                else if (dimension >= 426) effectiveHeight = 240;
 
-                rawStreams.push({
-                  quality,
-                  resolution,
-                  height: effectiveHeight,
-                  bandwidth: bwMatch ? parseInt(bwMatch[1], 10) : undefined,
-                  rawStreamUrl,
-                });
+                const nextLine = lines[i + 1]?.trim();
+                if (nextLine && !nextLine.startsWith("#")) {
+                  const rawStreamUrl = nextLine.startsWith("http")
+                    ? nextLine
+                    : new URL(nextLine, masterPlaylistUrl).href;
+
+                  rawStreams.push({
+                    quality: `${effectiveHeight}p`,
+                    resolution,
+                    height: effectiveHeight,
+                    format: "hls",
+                    bandwidth: bwMatch ? parseInt(bwMatch[1], 10) : undefined,
+                    rawStreamUrl,
+                    isDirectPlayable: false,
+                  });
+                }
               }
             }
+            rawStreams.sort((a, b) => (b.height - a.height) || ((b.bandwidth || 0) - (a.bandwidth || 0)));
           }
-          rawStreams.sort((a, b) => (b.height - a.height) || ((b.bandwidth || 0) - (a.bandwidth || 0)));
+        } catch {
+          // Fallback if master playlist fetching/parsing fails
         }
-      } catch {
-        // Fallback if master playlist fetching/parsing fails
-      }
 
-      // If no sub-streams parsed (or single direct media playlist)
-      if (rawStreams.length === 0) {
-        rawStreams.push({
-          quality: `${primaryVideo.quality || 720}p`,
-          resolution: "1280x720",
-          height: primaryVideo.quality || 720,
-          rawStreamUrl: masterPlaylistUrl,
-        });
+        if (rawStreams.length === 0) {
+          rawStreams.push({
+            quality: `${primaryVideo.quality || 720}p`,
+            resolution: "1280x720",
+            height: primaryVideo.quality || 720,
+            format: "hls",
+            rawStreamUrl: masterPlaylistUrl,
+            isDirectPlayable: false,
+          });
+        }
       }
 
       // Extract raw direct .srt subtitle URL from CDN without proxy
@@ -477,7 +522,10 @@ export class DracinemaScraper extends BaseScraper {
         movieName: cleanText(meta?.movieName) || cleanMovieKey,
         cover: cleanText(meta?.cover),
         chapterName: cleanText(detail?.chapterName) || `Episode ${episode}`,
-        masterPlaylistUrl,
+        videoFormat,
+        directMp4Url,
+        webPlayerUrl: `${this.baseUrl}/play/${cleanMovieKey}/${episode}`,
+        masterPlaylistUrl: firstUrl,
         rawStreams,
         rawSubtitleUrl,
         subtitleProxyUrl,
@@ -486,6 +534,155 @@ export class DracinemaScraper extends BaseScraper {
     } catch (err) {
       console.error(`Playback error for ${movieKey} ep ${episode}:`, err);
       return null;
+    }
+  }
+
+  public async downloadEpisodeMp4(
+    movieKey: string,
+    episode: number = 1,
+    targetFilePath?: string,
+    onProgress?: (progress: { completed: number; total: number; percent: number; stage: string }) => void
+  ): Promise<DownloadResult> {
+    const playback = await this.getPlaybackStream(movieKey, episode);
+    if (!playback) {
+      throw new Error(`Failed to get playback information for ${movieKey} episode ${episode}`);
+    }
+
+    const downloadDir = path.resolve(this.storage.dataDir, "downloads");
+    if (!fs.existsSync(downloadDir)) {
+      fs.mkdirSync(downloadDir, { recursive: true });
+    }
+
+    const defaultFileName = `${playback.movieKey}_ep${episode}.mp4`;
+    const finalPath = targetFilePath ? path.resolve(targetFilePath) : path.join(downloadDir, defaultFileName);
+
+    if (playback.videoFormat === "mp4" && playback.directMp4Url) {
+      if (onProgress) {
+        onProgress({ completed: 0, total: 100, percent: 0, stage: "Downloading direct MP4..." });
+      }
+      const res = await fetch(playback.directMp4Url, {
+        headers: {
+          "User-Agent": DEFAULT_USER_AGENT,
+          Referer: "https://www.dracinema.com/",
+        },
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status} when downloading MP4`);
+      const buffer = Buffer.from(await res.arrayBuffer());
+      fs.writeFileSync(finalPath, buffer);
+      if (onProgress) {
+        onProgress({ completed: 100, total: 100, percent: 100, stage: "Done" });
+      }
+
+      const stats = fs.statSync(finalPath);
+      const mb = (stats.size / (1024 * 1024)).toFixed(2);
+      return {
+        success: true,
+        filePath: finalPath,
+        fileSizeBytes: stats.size,
+        fileSizeFormatted: `${mb} MB`,
+        format: "mp4",
+      };
+    } else {
+      // HLS fragmented MP4 download & assembly
+      const streamUrl = playback.rawStreams[0]?.rawStreamUrl || playback.masterPlaylistUrl;
+      let playlistText = await this.fetchText(streamUrl);
+      let streamBaseUrl = streamUrl;
+
+      // If master playlist with sub-playlists, get the highest sub-playlist
+      if (playlistText.includes("#EXT-X-STREAM-INF:")) {
+        const subStream = playback.rawStreams[0]?.rawStreamUrl;
+        if (subStream && subStream !== streamUrl) {
+          playlistText = await this.fetchText(subStream);
+          streamBaseUrl = subStream;
+        }
+      }
+
+      const mapMatch = playlistText.match(/#EXT-X-MAP:URI="([^"]+)"/);
+      const initUri = mapMatch ? mapMatch[1] : null;
+      const segmentUris = playlistText
+        .split(/\r?\n/)
+        .map((l) => l.trim())
+        .filter((l) => l && !l.startsWith("#"));
+
+      if (!segmentUris.length) {
+        throw new Error("No media segments found in HLS playlist");
+      }
+
+      const chunks: Buffer[] = [];
+      const totalSteps = (initUri ? 1 : 0) + segmentUris.length;
+      let completedSteps = 0;
+
+      if (initUri) {
+        if (onProgress) {
+          onProgress({ completed: completedSteps, total: totalSteps, percent: 0, stage: "Downloading initialization segment..." });
+        }
+        const initUrl = initUri.startsWith("http") ? initUri : new URL(initUri, streamBaseUrl).href;
+        const initRes = await fetch(initUrl);
+        if (initRes.ok) {
+          chunks.push(Buffer.from(await initRes.arrayBuffer()));
+        }
+        completedSteps++;
+      }
+
+      const segResults = new Map<number, Buffer>();
+      const queue = segmentUris.map((uri, idx) => ({ idx, uri }));
+      const concurrency = 6;
+
+      const workers = Array.from({ length: concurrency }, async () => {
+        while (queue.length > 0) {
+          const item = queue.shift();
+          if (!item) break;
+          const segUrl = item.uri.startsWith("http") ? item.uri : new URL(item.uri, streamBaseUrl).href;
+          try {
+            const res = await fetch(segUrl);
+            if (res.ok) {
+              const buf = Buffer.from(await res.arrayBuffer());
+              segResults.set(item.idx, buf);
+            }
+          } catch {
+            // retry once
+            try {
+              const res = await fetch(segUrl);
+              if (res.ok) {
+                const buf = Buffer.from(await res.arrayBuffer());
+                segResults.set(item.idx, buf);
+              }
+            } catch {
+              // ignore
+            }
+          }
+          completedSteps++;
+          if (onProgress) {
+            const pct = Math.floor((completedSteps / totalSteps) * 100);
+            onProgress({
+              completed: completedSteps,
+              total: totalSteps,
+              percent: pct,
+              stage: `Downloading chunk ${completedSteps}/${totalSteps}...`,
+            });
+          }
+        }
+      });
+
+      await Promise.all(workers);
+
+      for (let i = 0; i < segmentUris.length; i++) {
+        const segBuf = segResults.get(i);
+        if (segBuf) chunks.push(segBuf);
+      }
+
+      const merged = Buffer.concat(chunks);
+      fs.writeFileSync(finalPath, merged);
+
+      const stats = fs.statSync(finalPath);
+      const mb = (stats.size / (1024 * 1024)).toFixed(2);
+      return {
+        success: true,
+        filePath: finalPath,
+        fileSizeBytes: stats.size,
+        fileSizeFormatted: `${mb} MB`,
+        format: "fmp4/mp4",
+      };
     }
   }
 }

@@ -143,6 +143,25 @@ export async function runCli(argv: string[] = process.argv.slice(2)): Promise<vo
     return;
   }
 
+  if (args["download"]) {
+    const slug = String(args["download"]);
+    const episode = typeof args["episode"] === "number" ? args["episode"] : 1;
+    const outputPath = typeof args["output"] === "string" ? args["output"] : undefined;
+    console.log(`\n[*] Mengunduh video MP4 untuk '${slug}' Episode ${episode}...`);
+    try {
+      const result = await scraper.downloadEpisodeMp4(slug, episode, outputPath, (p) => {
+        process.stdout.write(`\r    -> [${p.percent}%] ${p.stage}`);
+      });
+      console.log(`\n[+] Unduhan selesai berhasil!`);
+      console.log(`    File path : ${result.filePath}`);
+      console.log(`    Ukuran    : ${result.fileSizeFormatted} (${result.fileSizeBytes} bytes)`);
+      console.log(`    Format    : ${result.format}`);
+    } catch (err: any) {
+      console.error(`\n[-] Gagal mengunduh video: ${err.message || err}`);
+    }
+    return;
+  }
+
   if (args["playback"]) {
     const slug = String(args["playback"]);
     const episode = typeof args["episode"] === "number" ? args["episode"] : 1;
@@ -157,12 +176,18 @@ export async function runCli(argv: string[] = process.argv.slice(2)): Promise<vo
     console.log("\n" + "=".repeat(60));
     console.log(`Judul       : ${playback.movieName}`);
     console.log(`Episode     : ${playback.chapterName}`);
+    console.log(`Format      : ${playback.videoFormat.toUpperCase()} (${playback.videoFormat === "mp4" ? "Direct Playable MP4 Video" : "HLS Playlist"})`);
     console.log(`Cover       : ${playback.cover}`);
-    console.log(`Master M3U8 : ${playback.masterPlaylistUrl}`);
+    console.log(`Web Player  : ${playback.webPlayerUrl}`);
+    if (playback.directMp4Url) {
+      console.log(`Direct MP4  : ${playback.directMp4Url}`);
+    }
+    console.log(`Master URL  : ${playback.masterPlaylistUrl}`);
     console.log("-".repeat(60));
-    console.log("Raw Stream Qualities (Direct .m3u8 URLs):");
+    console.log(`Raw Stream Qualities (${playback.videoFormat === "mp4" ? "Direct MP4 URLs" : "HLS Stream URLs"}):`);
     playback.rawStreams.forEach((s) => {
-      console.log(`  [${s.quality.padEnd(5)}] (${s.resolution}) => ${s.rawStreamUrl}`);
+      const typeTag = s.format === "mp4" ? "[Direct MP4]" : "[HLS Playlist]";
+      console.log(`  [${s.quality.padEnd(5)}] (${s.resolution.padEnd(9)}) ${typeTag} => ${s.rawStreamUrl}`);
     });
     console.log("-".repeat(60));
     if (playback.rawSubtitleUrl) {
@@ -173,6 +198,18 @@ export async function runCli(argv: string[] = process.argv.slice(2)): Promise<vo
     }
     if (playback.subtitlesPreview) {
       console.log(`Subtitle Preview           :\n${playback.subtitlesPreview.slice(0, 200)}...`);
+    }
+    if (playback.videoFormat === "hls") {
+      console.log("-".repeat(60));
+      console.log(`[Info] Stream ini menggunakan format HLS (.m3u8). Browser biasa (Chrome/Edge) mendownload file teks m3u8 jika diklik langsung.`);
+      console.log(`       - Putar langsung di browser: ${playback.webPlayerUrl}`);
+      console.log(`       - Atau unduh sebagai video .mp4 utuh:`);
+      console.log(`         npm run dracinema -- --download "${slug}" --episode ${episode}`);
+    } else {
+      console.log("-".repeat(60));
+      console.log(`[Info] Stream ini adalah Direct MP4! Siap diputar langsung di browser, VLC, atau media player.`);
+      console.log(`       - Unduh file .mp4 langsung:`);
+      console.log(`         npm run dracinema -- --download "${slug}" --episode ${episode}`);
     }
     console.log("=".repeat(60));
     return;

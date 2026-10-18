@@ -51,8 +51,10 @@ Disimpan di `data/dracinema/dracinema.db`:
 - 📦 **Zero External DB Dependency**: Menggunakan database bawaan **`node:sqlite`** (`DatabaseSync` bawaan Node.js modern).
 - 🛡️ **Comprehensive Data Validation**: Seluruh data yang diekstrak divalidasi dan disanitasi sebelum disimpan ke SQLite atau diekspor.
 - 🎥 **Raw Video Stream & Subtitle Extractor (Dracinema)**:
-  - Mem-parsing master `.m3u8` menjadi direct raw stream URLs per resolusi: **1080p, 720p, 540p, 480p, 360p, 240p** tanpa melewati proxy.
-  - Mendekode URL subtitle langsung dari CDN menjadi file **`.srt` mentah (raw direct URL)** tanpa proxy.
+  - **Direct Playable MP4 URLs**: Otomatis mendeteksi dan mengekstrak direct `.mp4` video (tersedia di >85% drama, termasuk provider `pd_`, `ml_`, `ext_`) yang dapat langsung diputar di browser apa saja, VLC, maupun pemutar video HP tanpa perlu pemutar khusus.
+  - **Multi-Resolution Streams**: Ekstraksi resolusi bertingkat (**1080p, 720p, 540p, 480p, 360p, 240p**) langsung dari CDN asal tanpa proxy.
+  - **HLS to MP4 Auto Downloader**: Mengunduh dan menggabungkan segmen fMP4 HLS secara otomatis menjadi file `.mp4` utuh yang valid dan siap tonton.
+  - **Direct Raw Subtitle**: Mendekode URL subtitle langsung dari CDN menjadi file **`.srt` mentah (raw direct URL)** tanpa proxy.
 - 🔍 **Search Engine dengan Fallback**:
   - Dukungan pencarian Dracinema via endpoint API resmi (`/api/search?keyword=...`) dengan fallback cerdas ke pencarian SQLite lokal.
   - Dukungan pencarian Anime-Indo via query katalog dan database.
@@ -133,13 +135,18 @@ npx tsx src/cli.ts
 # A. Cari Drama China berdasarkan kata kunci
 npx tsx src/cli.ts dracinema --search "boss"
 
-# B. Ekstraksi raw video streams (1080p, 720p, etc.) & raw .srt subtitle
-npx tsx src/cli.ts dracinema --playback "1-hp-summon-tanpa-batas-dw_o6OsDcj9f2" --episode 1
+# B. Ekstraksi raw video streams (Direct MP4 / HLS multi-resolusi) & subtitle .srt
+npx tsx src/cli.ts dracinema --playback "baby-boss-pd_7665280437304153089" --episode 1
 
-# C. Tampilkan statistik database Dracinema
+# C. Unduh video langsung menjadi file .mp4 utuh
+npx tsx src/cli.ts dracinema --download "baby-boss-pd_7665280437304153089" --episode 1
+# Atau unduh drama HLS (.m3u8) otomatis digabung menjadi .mp4:
+npx tsx src/cli.ts dracinema --download "1-hp-summon-tanpa-batas-dw_o6OsDcj9f2" --episode 1
+
+# D. Tampilkan statistik database Dracinema
 npx tsx src/cli.ts dracinema --summary
 
-# D. Scraping penuh katalog sitemap, genre, dan koleksi
+# E. Scraping penuh katalog sitemap, genre, dan koleksi
 npx tsx src/cli.ts dracinema --all
 ```
 
@@ -173,15 +180,22 @@ const scraper = new dracinema.DracinemaScraper();
 const searchResults = await scraper.search("boss");
 console.log(`Ditemukan ${searchResults.length} drama:`, searchResults[0].title);
 
-// 2. Ekstraksi raw video streams (1080p/720p) & raw subtitle SRT
-const playback = await scraper.getPlaybackStream("1-hp-summon-tanpa-batas-dw_o6OsDcj9f2", 1);
+// 2. Ekstraksi raw video streams (Direct MP4 / HLS) & raw subtitle SRT
+const playback = await scraper.getPlaybackStream("baby-boss-pd_7665280437304153089", 1);
 if (playback) {
-  console.log("Master M3U8:", playback.masterPlaylistUrl);
+  console.log("Format:", playback.videoFormat); // "mp4" | "hls"
+  if (playback.directMp4Url) {
+    console.log("Direct MP4 URL (Bisa diputar langsung):", playback.directMp4Url);
+  }
   playback.rawStreams.forEach((s) => {
-    console.log(`- ${s.quality} (${s.resolution}): ${s.rawStreamUrl}`);
+    console.log(`- ${s.quality} (${s.resolution}) [${s.format}]: ${s.rawStreamUrl}`);
   });
   console.log("Raw SRT Subtitle:", playback.rawSubtitleUrl);
 }
+
+// 3. Download episode menjadi file MP4
+const result = await scraper.downloadEpisodeMp4("baby-boss-pd_7665280437304153089", 1);
+console.log(`Downloaded to ${result.filePath} (${result.fileSizeFormatted})`);
 ```
 
 ### Menggunakan Anime-Indo:

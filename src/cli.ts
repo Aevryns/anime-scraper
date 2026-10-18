@@ -19,7 +19,8 @@ function printHelp(): void {
   }
   console.log("\nExamples:");
   console.log("  npx tsx src/cli.ts dracinema --search \"boss\"");
-  console.log("  npx tsx src/cli.ts dracinema --playback \"1-hp-summon-tanpa-batas-dw_o6OsDcj9f2\" --episode 1");
+  console.log("  npx tsx src/cli.ts dracinema --playback \"baby-boss-pd_7665280437304153089\" --episode 1");
+  console.log("  npx tsx src/cli.ts dracinema --download \"baby-boss-pd_7665280437304153089\" --episode 1");
   console.log("  npx tsx src/cli.ts dracinema --all");
   console.log("  npx tsx src/cli.ts dracinema --summary");
   console.log("  npx tsx src/cli.ts animeindo --search \"naruto\"");

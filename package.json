@@ -23,6 +23,7 @@
     "dracinema:collections": "tsx src/cli.ts dracinema --collections",
     "dracinema:search": "tsx src/cli.ts dracinema --search",
     "dracinema:playback": "tsx src/cli.ts dracinema --playback",
+    "dracinema:download": "tsx src/cli.ts dracinema --download",
     "dracinema:summary": "tsx src/cli.ts dracinema --summary",
     "summary": "tsx src/cli.ts animeindo --summary",
     "scrape:all": "tsx src/cli.ts animeindo --all",

@@ -1,3 +1,5 @@
+export type VideoFormatType = "mp4" | "hls";
+
 export interface DracinemaMovie {
   title: string;
   slug: string;
@@ -32,11 +34,13 @@ export interface DracinemaDetail {
 }
 
 export interface RawStreamQuality {
-  quality: string;        // e.g. "1080p", "720p", "540p", "480p", "360p", "240p"
-  resolution: string;     // e.g. "1920x1080"
-  height: number;         // e.g. 1080
-  bandwidth?: number;     // e.g. 3894736
-  rawStreamUrl: string;   // Direct .m3u8 stream URL (no proxy)
+  quality: string;           // e.g. "1080p", "720p", "540p", "480p", "360p", "240p"
+  resolution: string;        // e.g. "1920x1080"
+  height: number;            // e.g. 1080
+  format: VideoFormatType;   // "mp4" or "hls"
+  bandwidth?: number;        // e.g. 3894736
+  rawStreamUrl: string;      // Direct .mp4 or .m3u8 stream URL (no proxy)
+  isDirectPlayable: boolean; // true for MP4 (can open directly in any browser)
 }
 
 export interface DracinemaPlayback {
@@ -45,11 +49,22 @@ export interface DracinemaPlayback {
   movieName: string;
   cover: string;
   chapterName: string;
-  masterPlaylistUrl: string;       // Original master .m3u8 URL
+  videoFormat: VideoFormatType;    // "mp4" or "hls"
+  directMp4Url?: string;          // Direct playable .mp4 URL (if available)
+  webPlayerUrl: string;           // Play URL on dracinema.com
+  masterPlaylistUrl: string;       // Original source stream/playlist URL
   rawStreams: RawStreamQuality[];  // Parsed individual stream URLs by quality
   rawSubtitleUrl?: string;         // Direct .srt subtitle URL from CDN (no proxy)
   subtitleProxyUrl?: string;       // Proxied subtitle URL if needed
   subtitlesPreview?: string;       // Subtitle text preview
+}
+
+export interface DownloadResult {
+  success: boolean;
+  filePath: string;
+  fileSizeBytes: number;
+  fileSizeFormatted: string;
+  format: string;
 }
 
 export interface DracinemaSearchResult {
