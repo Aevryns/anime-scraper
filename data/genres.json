@@ -1,0 +1,467 @@
+[
+  {
+    "name": "Action",
+    "slug": "action",
+    "url": "https://anime-indo.lol/genres/action/"
+  },
+  {
+    "name": "Adventrue",
+    "slug": "adventrue",
+    "url": "https://anime-indo.lol/genres/adventrue/"
+  },
+  {
+    "name": "Adventure",
+    "slug": "adventure",
+    "url": "https://anime-indo.lol/genres/adventure/"
+  },
+  {
+    "name": "Anthropomorphic",
+    "slug": "anthropomorphic",
+    "url": "https://anime-indo.lol/genres/anthropomorphic/"
+  },
+  {
+    "name": "Avant Garde",
+    "slug": "avant-garde",
+    "url": "https://anime-indo.lol/genres/avant-garde/"
+  },
+  {
+    "name": "Cars",
+    "slug": "cars",
+    "url": "https://anime-indo.lol/genres/cars/"
+  },
+  {
+    "name": "CGDCT",
+    "slug": "cgdct",
+    "url": "https://anime-indo.lol/genres/cgdct/"
+  },
+  {
+    "name": "Childcare",
+    "slug": "childcare",
+    "url": "https://anime-indo.lol/genres/childcare/"
+  },
+  {
+    "name": "Comdey",
+    "slug": "comdey",
+    "url": "https://anime-indo.lol/genres/comdey/"
+  },
+  {
+    "name": "Comedy",
+    "slug": "comedy",
+    "url": "https://anime-indo.lol/genres/comedy/"
+  },
+  {
+    "name": "Crossdressing",
+    "slug": "crossdressing",
+    "url": "https://anime-indo.lol/genres/crossdressing/"
+  },
+  {
+    "name": "Delinquents",
+    "slug": "delinquents",
+    "url": "https://anime-indo.lol/genres/delinquents/"
+  },
+  {
+    "name": "Dementia",
+    "slug": "dementia",
+    "url": "https://anime-indo.lol/genres/dementia/"
+  },
+  {
+    "name": "Demons",
+    "slug": "demons",
+    "url": "https://anime-indo.lol/genres/demons/"
+  },
+  {
+    "name": "Detective",
+    "slug": "detective",
+    "url": "https://anime-indo.lol/genres/detective/"
+  },
+  {
+    "name": "Donghua",
+    "slug": "donghua",
+    "url": "https://anime-indo.lol/genres/donghua/"
+  },
+  {
+    "name": "Drama",
+    "slug": "drama",
+    "url": "https://anime-indo.lol/genres/drama/"
+  },
+  {
+    "name": "Ecchi",
+    "slug": "ecchi",
+    "url": "https://anime-indo.lol/genres/ecchi/"
+  },
+  {
+    "name": "Echhi",
+    "slug": "echhi",
+    "url": "https://anime-indo.lol/genres/echhi/"
+  },
+  {
+    "name": "Educational",
+    "slug": "educational",
+    "url": "https://anime-indo.lol/genres/educational/"
+  },
+  {
+    "name": "Erotica",
+    "slug": "erotica",
+    "url": "https://anime-indo.lol/genres/erotica/"
+  },
+  {
+    "name": "Family",
+    "slug": "family",
+    "url": "https://anime-indo.lol/genres/family/"
+  },
+  {
+    "name": "Fantasy",
+    "slug": "fantasy",
+    "url": "https://anime-indo.lol/genres/fantasy/"
+  },
+  {
+    "name": "Gag Humor",
+    "slug": "gag-humor",
+    "url": "https://anime-indo.lol/genres/gag-humor/"
+  },
+  {
+    "name": "Game",
+    "slug": "game",
+    "url": "https://anime-indo.lol/genres/game/"
+  },
+  {
+    "name": "Girls Love",
+    "slug": "girls-love",
+    "url": "https://anime-indo.lol/genres/girls-love/"
+  },
+  {
+    "name": "Gore",
+    "slug": "gore",
+    "url": "https://anime-indo.lol/genres/gore/"
+  },
+  {
+    "name": "Gourmet",
+    "slug": "gourmet",
+    "url": "https://anime-indo.lol/genres/gourmet/"
+  },
+  {
+    "name": "Harem",
+    "slug": "harem",
+    "url": "https://anime-indo.lol/genres/harem/"
+  },
+  {
+    "name": "High Stakes Game",
+    "slug": "high-stakes-game",
+    "url": "https://anime-indo.lol/genres/high-stakes-game/"
+  },
+  {
+    "name": "Historical",
+    "slug": "historical",
+    "url": "https://anime-indo.lol/genres/historical/"
+  },
+  {
+    "name": "Horror",
+    "slug": "horror",
+    "url": "https://anime-indo.lol/genres/horror/"
+  },
+  {
+    "name": "Idols (Female)",
+    "slug": "idols-female",
+    "url": "https://anime-indo.lol/genres/idols-female/"
+  },
+  {
+    "name": "Idols (Male)",
+    "slug": "idols-male",
+    "url": "https://anime-indo.lol/genres/idols-male/"
+  },
+  {
+    "name": "Isekai",
+    "slug": "isekai",
+    "url": "https://anime-indo.lol/genres/isekai/"
+  },
+  {
+    "name": "Iyashikei",
+    "slug": "iyashikei",
+    "url": "https://anime-indo.lol/genres/iyashikei/"
+  },
+  {
+    "name": "Josei",
+    "slug": "josei",
+    "url": "https://anime-indo.lol/genres/josei/"
+  },
+  {
+    "name": "Kids",
+    "slug": "kids",
+    "url": "https://anime-indo.lol/genres/kids/"
+  },
+  {
+    "name": "Life",
+    "slug": "life",
+    "url": "https://anime-indo.lol/genres/life/"
+  },
+  {
+    "name": "Live Action",
+    "slug": "live-action",
+    "url": "https://anime-indo.lol/genres/live-action/"
+  },
+  {
+    "name": "Love Polygon",
+    "slug": "love-polygon",
+    "url": "https://anime-indo.lol/genres/love-polygon/"
+  },
+  {
+    "name": "Love Status Quo",
+    "slug": "love-status-quo",
+    "url": "https://anime-indo.lol/genres/love-status-quo/"
+  },
+  {
+    "name": "Magic",
+    "slug": "magic",
+    "url": "https://anime-indo.lol/genres/magic/"
+  },
+  {
+    "name": "Magical Sex Shift",
+    "slug": "magical-sex-shift",
+    "url": "https://anime-indo.lol/genres/magical-sex-shift/"
+  },
+  {
+    "name": "Mahou Shoujo",
+    "slug": "mahou-shoujo",
+    "url": "https://anime-indo.lol/genres/mahou-shoujo/"
+  },
+  {
+    "name": "Martial Arts",
+    "slug": "martial-arts",
+    "url": "https://anime-indo.lol/genres/martial-arts/"
+  },
+  {
+    "name": "Mecha",
+    "slug": "mecha",
+    "url": "https://anime-indo.lol/genres/mecha/"
+  },
+  {
+    "name": "Medical",
+    "slug": "medical",
+    "url": "https://anime-indo.lol/genres/medical/"
+  },
+  {
+    "name": "Military",
+    "slug": "military",
+    "url": "https://anime-indo.lol/genres/military/"
+  },
+  {
+    "name": "Music",
+    "slug": "music",
+    "url": "https://anime-indo.lol/genres/music/"
+  },
+  {
+    "name": "Mystery",
+    "slug": "mystery",
+    "url": "https://anime-indo.lol/genres/mystery/"
+  },
+  {
+    "name": "Mythology",
+    "slug": "mythology",
+    "url": "https://anime-indo.lol/genres/mythology/"
+  },
+  {
+    "name": "Organized Crime",
+    "slug": "organized-crime",
+    "url": "https://anime-indo.lol/genres/organized-crime/"
+  },
+  {
+    "name": "Otaku Culture",
+    "slug": "otaku-culture",
+    "url": "https://anime-indo.lol/genres/otaku-culture/"
+  },
+  {
+    "name": "Parody",
+    "slug": "parody",
+    "url": "https://anime-indo.lol/genres/parody/"
+  },
+  {
+    "name": "Performing Arts",
+    "slug": "performing-arts",
+    "url": "https://anime-indo.lol/genres/performing-arts/"
+  },
+  {
+    "name": "Pets",
+    "slug": "pets",
+    "url": "https://anime-indo.lol/genres/pets/"
+  },
+  {
+    "name": "Police",
+    "slug": "police",
+    "url": "https://anime-indo.lol/genres/police/"
+  },
+  {
+    "name": "Psychological",
+    "slug": "psychological",
+    "url": "https://anime-indo.lol/genres/psychological/"
+  },
+  {
+    "name": "Racing",
+    "slug": "racing",
+    "url": "https://anime-indo.lol/genres/racing/"
+  },
+  {
+    "name": "Reincarnation",
+    "slug": "reincarnation",
+    "url": "https://anime-indo.lol/genres/reincarnation/"
+  },
+  {
+    "name": "Reverse Harem",
+    "slug": "reverse-harem",
+    "url": "https://anime-indo.lol/genres/reverse-harem/"
+  },
+  {
+    "name": "Romance",
+    "slug": "romance",
+    "url": "https://anime-indo.lol/genres/romance/"
+  },
+  {
+    "name": "Romantic Subtext",
+    "slug": "romantic-subtext",
+    "url": "https://anime-indo.lol/genres/romantic-subtext/"
+  },
+  {
+    "name": "Samurai",
+    "slug": "samurai",
+    "url": "https://anime-indo.lol/genres/samurai/"
+  },
+  {
+    "name": "School",
+    "slug": "school",
+    "url": "https://anime-indo.lol/genres/school/"
+  },
+  {
+    "name": "Sci-Fi",
+    "slug": "sci-fi",
+    "url": "https://anime-indo.lol/genres/sci-fi/"
+  },
+  {
+    "name": "Seinen",
+    "slug": "seinen",
+    "url": "https://anime-indo.lol/genres/seinen/"
+  },
+  {
+    "name": "Shoujo",
+    "slug": "shoujo",
+    "url": "https://anime-indo.lol/genres/shoujo/"
+  },
+  {
+    "name": "Shoujo Ai",
+    "slug": "shoujo-ai",
+    "url": "https://anime-indo.lol/genres/shoujo-ai/"
+  },
+  {
+    "name": "Shounen",
+    "slug": "shounen",
+    "url": "https://anime-indo.lol/genres/shounen/"
+  },
+  {
+    "name": "Shounen Ai",
+    "slug": "shounen-ai",
+    "url": "https://anime-indo.lol/genres/shounen-ai/"
+  },
+  {
+    "name": "Showbiz",
+    "slug": "showbiz",
+    "url": "https://anime-indo.lol/genres/showbiz/"
+  },
+  {
+    "name": "Slice of Life",
+    "slug": "slice-of-life",
+    "url": "https://anime-indo.lol/genres/slice-of-life/"
+  },
+  {
+    "name": "Space",
+    "slug": "space",
+    "url": "https://anime-indo.lol/genres/space/"
+  },
+  {
+    "name": "Sports",
+    "slug": "sports",
+    "url": "https://anime-indo.lol/genres/sports/"
+  },
+  {
+    "name": "Strategy Game",
+    "slug": "strategy-game",
+    "url": "https://anime-indo.lol/genres/strategy-game/"
+  },
+  {
+    "name": "Super Power",
+    "slug": "super-power",
+    "url": "https://anime-indo.lol/genres/super-power/"
+  },
+  {
+    "name": "Supernatural",
+    "slug": "supernatural",
+    "url": "https://anime-indo.lol/genres/supernatural/"
+  },
+  {
+    "name": "Survival",
+    "slug": "survival",
+    "url": "https://anime-indo.lol/genres/survival/"
+  },
+  {
+    "name": "Suspense",
+    "slug": "suspense",
+    "url": "https://anime-indo.lol/genres/suspense/"
+  },
+  {
+    "name": "Team Sports",
+    "slug": "team-sports",
+    "url": "https://anime-indo.lol/genres/team-sports/"
+  },
+  {
+    "name": "Thriller",
+    "slug": "thriller",
+    "url": "https://anime-indo.lol/genres/thriller/"
+  },
+  {
+    "name": "Time Travel",
+    "slug": "time-travel",
+    "url": "https://anime-indo.lol/genres/time-travel/"
+  },
+  {
+    "name": "Tokusatsu",
+    "slug": "tokusatsu",
+    "url": "https://anime-indo.lol/genres/tokusatsu/"
+  },
+  {
+    "name": "Urban Fantasy",
+    "slug": "urban-fantasy",
+    "url": "https://anime-indo.lol/genres/urban-fantasy/"
+  },
+  {
+    "name": "Vampire",
+    "slug": "vampire",
+    "url": "https://anime-indo.lol/genres/vampire/"
+  },
+  {
+    "name": "Video Game",
+    "slug": "video-game",
+    "url": "https://anime-indo.lol/genres/video-game/"
+  },
+  {
+    "name": "Villainess",
+    "slug": "villainess",
+    "url": "https://anime-indo.lol/genres/villainess/"
+  },
+  {
+    "name": "Visual Arts",
+    "slug": "visual-arts",
+    "url": "https://anime-indo.lol/genres/visual-arts/"
+  },
+  {
+    "name": "Work Life",
+    "slug": "work-life",
+    "url": "https://anime-indo.lol/genres/work-life/"
+  },
+  {
+    "name": "Workplace",
+    "slug": "workplace",
+    "url": "https://anime-indo.lol/genres/workplace/"
+  },
+  {
+    "name": "Yaoi",
+    "slug": "yaoi",
+    "url": "https://anime-indo.lol/genres/yaoi/"
+  }
+]

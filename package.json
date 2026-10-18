@@ -1,0 +1,28 @@
+{
+  "name": "anime-indo-scraper",
+  "version": "1.0.0",
+  "description": "High-performance TypeScript/Node.js scraper for anime-indo.lol",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/cli.ts",
+    "build": "tsc",
+    "scrape:all": "tsx src/cli.ts --all",
+    "scrape:details": "tsx src/cli.ts --details --concurrency 25",
+    "scrape:movies": "tsx src/cli.ts --movies",
+    "scrape:genres": "tsx src/cli.ts --genres",
+    "scrape:updates": "tsx src/cli.ts --updates",
+    "summary": "tsx src/cli.ts --summary"
+  },
+  "keywords": ["anime", "scraper", "typescript", "nodejs"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.23.15",
+    "typescript": "^5.7.2"
+  }
+}
