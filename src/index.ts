@@ -1,5 +1,4 @@
-export * from "./models.js";
-export * from "./validator.js";
-export * from "./storage.js";
-export * from "./scraper.js";
-export * as Dracinema from "./dracinema/index.js";
+export * from "./core/index.js";
+export * from "./scrapers/index.js";
+export * as Dracinema from "./scrapers/dracinema/index.js";
+export * as AnimeIndo from "./scrapers/animeindo/index.js";

@@ -1,19 +1,19 @@
-# 🎬 Anime & Drama Scraper Suite
+# 🌐 Web Scraper Suite
 
-[![GitHub Topics](https://img.shields.io/badge/topics-anime--scraper%20%7C%20anime--api%20%7C%20dracinema-blue.svg)](https://github.com/Aevryns/anime-scraper)
+[![GitHub Topics](https://img.shields.io/badge/topics-web--scraper%20%7C%20dracinema%20%7C%20anime--scraper-blue.svg)](https://github.com/Aevryns/web-scraper)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-24%2B-green?logo=node.js)](https://nodejs.org/)
 [![Database](https://img.shields.io/badge/SQLite-node%3Asqlite-lightgrey?logo=sqlite)](https://nodejs.org/api/sqlite.html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Website](https://img.shields.io/badge/website-zeltoria.web.id-007acc?logo=googlechrome&logoColor=white)](https://zeltoria.web.id)
 
-> **High-performance, complete web scraper and structured data extractor for [anime-indo.lol](https://anime-indo.lol/) and [dracinema.com](https://www.dracinema.com/).**  
-> Mengambil seluruh katalog anime, drama Asia/China, detail lengkap (sinopsis, poster, genre tags), link episode, katalog film, kategori genre, update rilis episode terbaru, direct `.m3u8` HD 720p streams, subtitle `.srt`, dan link direct download.
+> **All-in-one modular web scraper & data extraction suite built with TypeScript and Node.js.**  
+> High-performance crawler engine featuring structured SQLite/JSON/CSV outputs, extensible plugin architecture for adding new scrapers, master playlist `.m3u8` stream resolution parser (1080p, 720p, 480p, etc.), direct raw subtitle extraction (`.srt`), and search API integration with local fallback.
 
 ---
 
 ### 🏷️ Tags & Topics
-`#anime-scraper` `#anime-api` `#dracinema` `#drama-china` `#anime` `#scraper` `#crawler` `#typescript` `#nodejs` `#cheerio` `#animeindo` `#sqlite` `#api`
+`#web-scraper` `#scraper` `#crawler` `#anime-scraper` `#anime-api` `#dracinema` `#drama-china` `#animeindo` `#data-extraction` `#typescript` `#nodejs` `#cheerio` `#sqlite` `#api`
 
 ---
 
@@ -39,21 +39,24 @@ Disimpan di `data/dracinema/dracinema.db`:
 | **Katalog Drama / Movie (`movies`)** | **10.000+** | SQLite, JSON, CSV | Ekstraksi sitemap dengan judul, sinopsis, player URL |
 | **Featured Collections (`collections`)** | **661** | SQLite, JSON, CSV | 28 halaman featured drama koleksi terpopuler |
 | **Kategori Genre (`genres`)** | **151** | SQLite, JSON | Kategori genre lengkap dari sitemap |
-| **Video Streams (.m3u8 HD & Subtitle)** | **Tersedia via API** | JSON | Resolusi HD 720p `.m3u8` direct URL dan file subtitle `.srt` |
+| **Raw Video Streams (.m3u8 1080p/720p/etc)** | **Tersedia via CLI/API** | JSON, Console | Raw master & sub-playlist streams per resolusi (tanpa proxy) |
+| **Raw Subtitles (.srt direct)** | **Tersedia via CLI/API** | Raw URL, Preview | File direct `.srt` langsung dari CDN tanpa proxy |
 
 ---
 
 ## ✨ Fitur Utama
 
+- 🧩 **Modular Scraper Architecture**: Inti (`src/core/`) menyediakan `BaseScraper` dan `BaseStorage` yang mudah diwariskan untuk menambahkan situs scraper baru di `src/scrapers/<name>/`.
 - ⚡ **Super Fast & Lightweight**: Menggunakan parser **Cheerio** dan native `fetch` dengan concurrency worker pool.
-- 📦 **Zero External DB Dependency**: Menggunakan database bawaan **`node:sqlite`** (SQLite sync engine bawaan Node.js v22/v24).
-- 🔄 **Auto-Resume & Checkpoint**: Menyimpan progres ke SQLite, aman dari interupsi jaringan.
-- 🛡️ **Built-in Validator**: Memvalidasi integritas URL, slug unik, judul, dan sanitasi metadata.
-- 🎥 **Video Stream Extractor**:
-  - **Anime-Indo**: Ekstraksi server embed (B-TUBE, GDRIVE, MP4Upload, YourUpload) dan link download (GDrive, MP4).
-  - **Dracinema**: Ekstraksi token playback untuk mendapatkan direct stream link `.m3u8` (720p HD) dan direct link subtitle `.srt`.
-- 🔍 **Search Engine**: Pencarian instan berdasarkan kata kunci ke katalog anime & drama.
-- 🚀 **100% Pure TypeScript**: Type safety penuh dan kompatibilitas ES Modules modern.
+- 📦 **Zero External DB Dependency**: Menggunakan database bawaan **`node:sqlite`** (`DatabaseSync` bawaan Node.js modern).
+- 🛡️ **Comprehensive Data Validation**: Seluruh data yang diekstrak divalidasi dan disanitasi sebelum disimpan ke SQLite atau diekspor.
+- 🎥 **Raw Video Stream & Subtitle Extractor (Dracinema)**:
+  - Mem-parsing master `.m3u8` menjadi direct raw stream URLs per resolusi: **1080p, 720p, 540p, 480p, 360p, 240p** tanpa melewati proxy.
+  - Mendekode URL subtitle langsung dari CDN menjadi file **`.srt` mentah (raw direct URL)** tanpa proxy.
+- 🔍 **Search Engine dengan Fallback**:
+  - Dukungan pencarian Dracinema via endpoint API resmi (`/api/search?keyword=...`) dengan fallback cerdas ke pencarian SQLite lokal.
+  - Dukungan pencarian Anime-Indo via query katalog dan database.
+- 🚀 **100% Pure TypeScript**: Type safety penuh, ES Modules, dan kompilasi bersih ke `dist/`.
 
 ---
 
@@ -62,27 +65,38 @@ Disimpan di `data/dracinema/dracinema.db`:
 ```
 .
 ├── src/
-│   ├── models.ts            # Tipe data & interface Anime-Indo
-│   ├── validator.ts         # Validasi URL & sanitasi Anime-Indo
-│   ├── storage.ts           # SQLite & exporter Anime-Indo
-│   ├── scraper.ts           # Crawler AnimeIndoScraper (Cheerio + fetch)
-│   ├── cli.ts               # Antarmuka CLI Anime-Indo
-│   ├── dracinema/
-│   │   ├── models.ts        # Tipe data & interface Dracinema
-│   │   ├── storage.ts       # SQLite & exporter Dracinema
-│   │   ├── scraper.ts       # Crawler DracinemaScraper (Sitemap + Playback API)
-│   │   ├── cli.ts           # Antarmuka CLI Dracinema
-│   │   └── index.ts         # Module exports Dracinema
-│   └── index.ts             # Main entry point exports
-├── data/
-│   ├── anime_indo.db        # Database SQLite Anime-Indo (4.635 anime + 56.593 episode)
+│   ├── core/                        # Inti modul reusable
+│   │   ├── types.ts                 # Metadata scraper & interface modul
+│   │   ├── base-scraper.ts          # BaseScraper (retry, concurrency, fetch helpers)
+│   │   ├── base-storage.ts          # BaseStorage (SQLite sync, JSON & CSV export)
+│   │   └── index.ts                 # Core exports
+│   ├── scrapers/                    # Direktori modul scraper
+│   │   ├── animeindo/               # Scraper anime-indo.lol
+│   │   │   ├── models.ts
+│   │   │   ├── validator.ts
+│   │   │   ├── storage.ts
+│   │   │   ├── scraper.ts
+│   │   │   ├── cli.ts
+│   │   │   └── index.ts
+│   │   ├── dracinema/               # Scraper dracinema.com
+│   │   │   ├── models.ts
+│   │   │   ├── validator.ts
+│   │   │   ├── storage.ts
+│   │   │   ├── scraper.ts
+│   │   │   ├── cli.ts
+│   │   │   └── index.ts
+│   │   └── index.ts                 # Scraper registry (getScraper, listScrapers)
+│   ├── cli.ts                       # CLI dispatcher universal
+│   └── index.ts                     # Main library exports
+├── data/                            # Dataset terstruktur
+│   ├── anime_indo.db                # SQLite Anime-Indo (4.635 anime + 56.593 episode)
 │   ├── anime_list.json / .csv
 │   ├── anime_details.json / .csv
 │   ├── movies.json / .csv
 │   ├── genres.json
 │   ├── latest_updates.json
-│   └── dracinema/           # Dataset Dracinema
-│       ├── dracinema.db     # Database SQLite Dracinema (10.000 drama)
+│   └── dracinema/                   # Dataset Dracinema
+│       ├── dracinema.db             # SQLite Dracinema (10.000 drama)
 │       ├── dracinema_movies.json / .csv
 │       ├── dracinema_collections.json / .csv
 │       └── dracinema_genres.json
@@ -98,8 +112,8 @@ Disimpan di `data/dracinema/dracinema.db`:
 
 ### 1. Instalasi
 ```bash
-git clone https://github.com/Aevryns/anime-scraper.git
-cd anime-scraper
+git clone https://github.com/Aevryns/web-scraper.git
+cd web-scraper
 npm install
 npm run build
 ```
@@ -108,69 +122,90 @@ npm run build
 
 ## 💻 Menjalankan Scraper via CLI
 
-### A. Scraper Anime-Indo (`anime-indo.lol`)
-
+### 1. Bantuan & Daftar Scraper
 ```bash
-# 1. Menampilkan ringkasan statistik database
-npm run summary
-
-# 2. Scraping penuh (Katalog, Genre, 41 Halaman Movie, 10 Halaman Update)
-npm run scrape:all
-
-# 3. Crawl seluruh detail lengkap anime (sinopsis, poster, seluruh episode)
-npm run scrape:details
-
-# 4. Mencari anime berdasarkan kata kunci
-node dist/cli.js --search "One Piece"
-
-# 5. Mengambil link streaming embed & direct download dari suatu episode
-node dist/cli.js --episode "/one-piece-episode-001/"
+npx tsx src/cli.ts
 ```
 
-### B. Scraper Dracinema (`dracinema.com`)
+### 2. Scraper Dracinema (`dracinema.com`)
 
 ```bash
-# 1. Menampilkan ringkasan statistik database Dracinema
-npm run dracinema:summary
+# A. Cari Drama China berdasarkan kata kunci
+npx tsx src/cli.ts dracinema --search "boss"
 
-# 2. Scraping penuh (10.000 Drama Movie, 151 Genre, 28 Halaman Koleksi)
-npm run dracinema:all
+# B. Ekstraksi raw video streams (1080p, 720p, etc.) & raw .srt subtitle
+npx tsx src/cli.ts dracinema --playback "1-hp-summon-tanpa-batas-dw_o6OsDcj9f2" --episode 1
 
-# 3. Ekstraksi detail drama lengkap (sinopsis, genre tags, daftar episode)
-npx tsx src/dracinema/cli.ts --detail 1-hp-summon-tanpa-batas-dw_o6OsDcj9f2
+# C. Tampilkan statistik database Dracinema
+npx tsx src/cli.ts dracinema --summary
 
-# 4. Ekstraksi direct .m3u8 video stream (720p HD) & direct .srt subtitle
-npx tsx src/dracinema/cli.ts --playback 1-hp-summon-tanpa-batas-dw_o6OsDcj9f2 --episode 1
+# D. Scraping penuh katalog sitemap, genre, dan koleksi
+npx tsx src/cli.ts dracinema --all
+```
+
+### 3. Scraper Anime-Indo (`anime-indo.lol`)
+
+```bash
+# A. Tampilkan statistik database Anime-Indo
+npx tsx src/cli.ts animeindo --summary
+
+# B. Cari Anime berdasarkan kata kunci
+npx tsx src/cli.ts animeindo --search "Naruto"
+
+# C. Ekstraksi stream embed & download episode
+npx tsx src/cli.ts animeindo --episode "/one-piece-episode-001/"
+
+# D. Scraping penuh katalog anime
+npx tsx src/cli.ts animeindo --all
 ```
 
 ---
 
 ## 🧩 Penggunaan sebagai Library TypeScript
 
-### Anime-Indo:
+### Menggunakan Dracinema:
 ```typescript
-import { AnimeIndoScraper } from "./src/index.js";
+import { dracinema } from "./src/scrapers/index.js";
 
-const scraper = new AnimeIndoScraper();
+const scraper = new dracinema.DracinemaScraper();
+
+// 1. Pencarian drama
+const searchResults = await scraper.search("boss");
+console.log(`Ditemukan ${searchResults.length} drama:`, searchResults[0].title);
+
+// 2. Ekstraksi raw video streams (1080p/720p) & raw subtitle SRT
+const playback = await scraper.getPlaybackStream("1-hp-summon-tanpa-batas-dw_o6OsDcj9f2", 1);
+if (playback) {
+  console.log("Master M3U8:", playback.masterPlaylistUrl);
+  playback.rawStreams.forEach((s) => {
+    console.log(`- ${s.quality} (${s.resolution}): ${s.rawStreamUrl}`);
+  });
+  console.log("Raw SRT Subtitle:", playback.rawSubtitleUrl);
+}
+```
+
+### Menggunakan Anime-Indo:
+```typescript
+import { animeindo } from "./src/scrapers/index.js";
+
+const scraper = new animeindo.AnimeIndoScraper();
 const anime = await scraper.getAnimeDetail("one-piece");
 console.log(`Judul: ${anime?.title}, Total Episode: ${anime?.episodesCount}`);
 ```
 
-### Dracinema:
-```typescript
-import { Dracinema } from "./src/index.js";
+---
 
-const scraper = new Dracinema.DracinemaScraper();
+## ➕ Cara Menambahkan Scraper Baru
 
-// 1. Ambil detail drama
-const detail = await scraper.getMovieDetail("1-hp-summon-tanpa-batas-dw_o6OsDcj9f2");
-console.log(`Judul: ${detail?.title}, Total Episode: ${detail?.totalEpisodes}`);
+Untuk menambahkan situs target scraper baru, buat folder di `src/scrapers/<nama-situs>/`:
 
-// 2. Ambil direct link .m3u8 HD video stream dan subtitle .srt
-const playback = await scraper.getPlaybackStream("1-hp-summon-tanpa-batas-dw_o6OsDcj9f2", 1);
-console.log("Stream M3U8 URL:", playback?.videoUrls[0]?.url);
-console.log("Subtitle SRT URL:", playback?.subtitleCdnUrl);
-```
+1. Buat `models.ts` untuk interface data.
+2. Buat `validator.ts` untuk fungsi validasi dan sanitasi data.
+3. Buat `storage.ts` dengan mewarisi `BaseStorage` dari `../../core/index.js`.
+4. Buat `scraper.ts` dengan mewarisi `BaseScraper` dari `../../core/index.js`.
+5. Buat `cli.ts` untuk menangani command line options.
+6. Daftarkan di `src/scrapers/index.ts` pada objek `scrapers`.
+
 ---
 
 ## 📄 Lisensi
