@@ -154,12 +154,6 @@ Database disimpan di [`data/anime_indo.db`](./data/anime_indo.db) dengan tabel-t
 - `movies` (`slug` PK, `title`, `url`, `image_url`, `labels`, `description`)
 - `genres` (`slug` PK, `name`, `url`)
 - `latest_updates` (`id` PK, `title`, `episode`, `url`, `image_url`, `scraped_at`)
-
----
-
-## 🌐 Website Resmi
-Website: [https://zeltoria.web.id](https://zeltoria.web.id)
-
 ---
 
 ## 📄 Lisensi
