@@ -1,7 +1,7 @@
 {
   "name": "anime-indo-scraper",
   "version": "1.0.0",
-  "description": "High-performance TypeScript/Node.js scraper for anime-indo.lol",
+  "description": "High-performance TypeScript/Node.js scraper for anime-indo.lol and dracinema.com",
   "main": "dist/index.js",
   "type": "module",
   "homepage": "https://zeltoria.web.id",
@@ -14,12 +14,20 @@
     "scrape:movies": "tsx src/cli.ts --movies",
     "scrape:genres": "tsx src/cli.ts --genres",
     "scrape:updates": "tsx src/cli.ts --updates",
-    "summary": "tsx src/cli.ts --summary"
+    "summary": "tsx src/cli.ts --summary",
+    "dracinema": "tsx src/dracinema/cli.ts",
+    "dracinema:all": "tsx src/dracinema/cli.ts --all",
+    "dracinema:movies": "tsx src/dracinema/cli.ts --movies",
+    "dracinema:genres": "tsx src/dracinema/cli.ts --genres",
+    "dracinema:collections": "tsx src/dracinema/cli.ts --collections",
+    "dracinema:summary": "tsx src/dracinema/cli.ts --summary"
   },
   "keywords": [
     "anime",
     "anime-scraper",
     "anime-api",
+    "dracinema",
+    "drama-china",
     "animeindo",
     "cheerio",
     "crawler",

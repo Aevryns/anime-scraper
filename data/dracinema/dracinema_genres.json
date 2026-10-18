@@ -1,0 +1,757 @@
+[
+  {
+    "name": "18+",
+    "slug": "18+",
+    "url": "https://www.dracinema.com/genre/18+"
+  },
+  {
+    "name": "Abad Pertengahan",
+    "slug": "abad-pertengahan",
+    "url": "https://www.dracinema.com/genre/abad-pertengahan"
+  },
+  {
+    "name": "Aksi",
+    "slug": "aksi",
+    "url": "https://www.dracinema.com/genre/aksi"
+  },
+  {
+    "name": "Ambisius",
+    "slug": "ambisius",
+    "url": "https://www.dracinema.com/genre/ambisius"
+  },
+  {
+    "name": "Amnesia",
+    "slug": "amnesia",
+    "url": "https://www.dracinema.com/genre/amnesia"
+  },
+  {
+    "name": "Anak Hilang",
+    "slug": "anak-hilang",
+    "url": "https://www.dracinema.com/genre/anak-hilang"
+  },
+  {
+    "name": "Balas Dendam",
+    "slug": "balas-dendam",
+    "url": "https://www.dracinema.com/genre/balas-dendam"
+  },
+  {
+    "name": "Bangkit",
+    "slug": "bangkit",
+    "url": "https://www.dracinema.com/genre/bangkit"
+  },
+  {
+    "name": "Bangkit Si Lemah",
+    "slug": "bangkit-si-lemah",
+    "url": "https://www.dracinema.com/genre/bangkit-si-lemah"
+  },
+  {
+    "name": "Bayi Lucu",
+    "slug": "bayi-lucu",
+    "url": "https://www.dracinema.com/genre/bayi-lucu"
+  },
+  {
+    "name": "Bayi Rahasia",
+    "slug": "bayi-rahasia",
+    "url": "https://www.dracinema.com/genre/bayi-rahasia"
+  },
+  {
+    "name": "Berani",
+    "slug": "berani",
+    "url": "https://www.dracinema.com/genre/berani"
+  },
+  {
+    "name": "Berkemauan Kuat",
+    "slug": "berkemauan-kuat",
+    "url": "https://www.dracinema.com/genre/berkemauan-kuat"
+  },
+  {
+    "name": "Berpura Pura Bodoh",
+    "slug": "berpura-pura-bodoh",
+    "url": "https://www.dracinema.com/genre/berpura-pura-bodoh"
+  },
+  {
+    "name": "Bersemangat",
+    "slug": "bersemangat",
+    "url": "https://www.dracinema.com/genre/bersemangat"
+  },
+  {
+    "name": "Bisnis",
+    "slug": "bisnis",
+    "url": "https://www.dracinema.com/genre/bisnis"
+  },
+  {
+    "name": "Ceo",
+    "slug": "ceo",
+    "url": "https://www.dracinema.com/genre/ceo"
+  },
+  {
+    "name": "Ceo Bayi Lucu",
+    "slug": "ceo-bayi-lucu",
+    "url": "https://www.dracinema.com/genre/ceo-bayi-lucu"
+  },
+  {
+    "name": "Ceo Bos",
+    "slug": "ceo-bos",
+    "url": "https://www.dracinema.com/genre/ceo-bos"
+  },
+  {
+    "name": "Ceo Cinta Setelah Pernikahan",
+    "slug": "ceo-cinta-setelah-pernikahan",
+    "url": "https://www.dracinema.com/genre/ceo-cinta-setelah-pernikahan"
+  },
+  {
+    "name": "Ceo Identitas Tersembunyi",
+    "slug": "ceo-identitas-tersembunyi",
+    "url": "https://www.dracinema.com/genre/ceo-identitas-tersembunyi"
+  },
+  {
+    "name": "Ceo Serangan Balik",
+    "slug": "ceo-serangan-balik",
+    "url": "https://www.dracinema.com/genre/ceo-serangan-balik"
+  },
+  {
+    "name": "Cerdas",
+    "slug": "cerdas",
+    "url": "https://www.dracinema.com/genre/cerdas"
+  },
+  {
+    "name": "Cerita Seru",
+    "slug": "cerita-seru",
+    "url": "https://www.dracinema.com/genre/cerita-seru"
+  },
+  {
+    "name": "Cinta Beracun",
+    "slug": "cinta-beracun",
+    "url": "https://www.dracinema.com/genre/cinta-beracun"
+  },
+  {
+    "name": "Cinta Pahit",
+    "slug": "cinta-pahit",
+    "url": "https://www.dracinema.com/genre/cinta-pahit"
+  },
+  {
+    "name": "Cinta Segitiga",
+    "slug": "cinta-segitiga",
+    "url": "https://www.dracinema.com/genre/cinta-segitiga"
+  },
+  {
+    "name": "Cinta Setelah Menikah",
+    "slug": "cinta-setelah-menikah",
+    "url": "https://www.dracinema.com/genre/cinta-setelah-menikah"
+  },
+  {
+    "name": "Cinta Terlarang",
+    "slug": "cinta-terlarang",
+    "url": "https://www.dracinema.com/genre/cinta-terlarang"
+  },
+  {
+    "name": "Dari Miskin Ke Kaya",
+    "slug": "dari-miskin-ke-kaya",
+    "url": "https://www.dracinema.com/genre/dari-miskin-ke-kaya"
+  },
+  {
+    "name": "Dari Musuh Ke Kekasih",
+    "slug": "dari-musuh-ke-kekasih",
+    "url": "https://www.dracinema.com/genre/dari-musuh-ke-kekasih"
+  },
+  {
+    "name": "Dewasa",
+    "slug": "dewasa",
+    "url": "https://www.dracinema.com/genre/dewasa"
+  },
+  {
+    "name": "Dewasa Muda",
+    "slug": "dewasa-muda",
+    "url": "https://www.dracinema.com/genre/dewasa-muda"
+  },
+  {
+    "name": "Dokter",
+    "slug": "dokter",
+    "url": "https://www.dracinema.com/genre/dokter"
+  },
+  {
+    "name": "Drama Medis",
+    "slug": "drama-medis",
+    "url": "https://www.dracinema.com/genre/drama-medis"
+  },
+  {
+    "name": "Drama Zaman",
+    "slug": "drama-zaman",
+    "url": "https://www.dracinema.com/genre/drama-zaman"
+  },
+  {
+    "name": "Dunia Ajaib",
+    "slug": "dunia-ajaib",
+    "url": "https://www.dracinema.com/genre/dunia-ajaib"
+  },
+  {
+    "name": "Emosional",
+    "slug": "emosional",
+    "url": "https://www.dracinema.com/genre/emosional"
+  },
+  {
+    "name": "Fantasi",
+    "slug": "fantasi",
+    "url": "https://www.dracinema.com/genre/fantasi"
+  },
+  {
+    "name": "Gadis Polos",
+    "slug": "gadis-polos",
+    "url": "https://www.dracinema.com/genre/gadis-polos"
+  },
+  {
+    "name": "Gelap",
+    "slug": "gelap",
+    "url": "https://www.dracinema.com/genre/gelap"
+  },
+  {
+    "name": "Harem",
+    "slug": "harem",
+    "url": "https://www.dracinema.com/genre/harem"
+  },
+  {
+    "name": "Hidup Kembali",
+    "slug": "hidup-kembali",
+    "url": "https://www.dracinema.com/genre/hidup-kembali"
+  },
+  {
+    "name": "Hubungan Beracun",
+    "slug": "hubungan-beracun",
+    "url": "https://www.dracinema.com/genre/hubungan-beracun"
+  },
+  {
+    "name": "Hubungan Satu Malam",
+    "slug": "hubungan-satu-malam",
+    "url": "https://www.dracinema.com/genre/hubungan-satu-malam"
+  },
+  {
+    "name": "Ibu Rumah Tangga",
+    "slug": "ibu-rumah-tangga",
+    "url": "https://www.dracinema.com/genre/ibu-rumah-tangga"
+  },
+  {
+    "name": "Ibu Tunggal",
+    "slug": "ibu-tunggal",
+    "url": "https://www.dracinema.com/genre/ibu-tunggal"
+  },
+  {
+    "name": "Identitas Rahasia",
+    "slug": "identitas-rahasia",
+    "url": "https://www.dracinema.com/genre/identitas-rahasia"
+  },
+  {
+    "name": "Identitas Salah",
+    "slug": "identitas-salah",
+    "url": "https://www.dracinema.com/genre/identitas-salah"
+  },
+  {
+    "name": "Identitas Tersembunyi",
+    "slug": "identitas-tersembunyi",
+    "url": "https://www.dracinema.com/genre/identitas-tersembunyi"
+  },
+  {
+    "name": "Istri",
+    "slug": "istri",
+    "url": "https://www.dracinema.com/genre/istri"
+  },
+  {
+    "name": "Kantor",
+    "slug": "kantor",
+    "url": "https://www.dracinema.com/genre/kantor"
+  },
+  {
+    "name": "Kaya",
+    "slug": "kaya",
+    "url": "https://www.dracinema.com/genre/kaya"
+  },
+  {
+    "name": "Kebencian",
+    "slug": "kebencian",
+    "url": "https://www.dracinema.com/genre/kebencian"
+  },
+  {
+    "name": "Kehamilan",
+    "slug": "kehamilan",
+    "url": "https://www.dracinema.com/genre/kehamilan"
+  },
+  {
+    "name": "Kehidupan Pedesaan",
+    "slug": "kehidupan-pedesaan",
+    "url": "https://www.dracinema.com/genre/kehidupan-pedesaan"
+  },
+  {
+    "name": "Kejahatan",
+    "slug": "kejahatan",
+    "url": "https://www.dracinema.com/genre/kejahatan"
+  },
+  {
+    "name": "Kejam",
+    "slug": "kejam",
+    "url": "https://www.dracinema.com/genre/kejam"
+  },
+  {
+    "name": "Kekuatan Super",
+    "slug": "kekuatan-super",
+    "url": "https://www.dracinema.com/genre/kekuatan-super"
+  },
+  {
+    "name": "Kelahiran Kembali",
+    "slug": "kelahiran-kembali",
+    "url": "https://www.dracinema.com/genre/kelahiran-kembali"
+  },
+  {
+    "name": "Kelahiran Kembali Pemeran Utama Pria",
+    "slug": "kelahiran-kembali-pemeran-utama-pria",
+    "url": "https://www.dracinema.com/genre/kelahiran-kembali-pemeran-utama-pria"
+  },
+  {
+    "name": "Keluarga",
+    "slug": "keluarga",
+    "url": "https://www.dracinema.com/genre/keluarga"
+  },
+  {
+    "name": "Keluarga Bangsawan",
+    "slug": "keluarga-bangsawan",
+    "url": "https://www.dracinema.com/genre/keluarga-bangsawan"
+  },
+  {
+    "name": "Keluarga Kaya",
+    "slug": "keluarga-kaya",
+    "url": "https://www.dracinema.com/genre/keluarga-kaya"
+  },
+  {
+    "name": "Kembali",
+    "slug": "kembali",
+    "url": "https://www.dracinema.com/genre/kembali"
+  },
+  {
+    "name": "Kesalahpahaman",
+    "slug": "kesalahpahaman",
+    "url": "https://www.dracinema.com/genre/kesalahpahaman"
+  },
+  {
+    "name": "Kesempatan Kedua",
+    "slug": "kesempatan-kedua",
+    "url": "https://www.dracinema.com/genre/kesempatan-kedua"
+  },
+  {
+    "name": "Ketegangan",
+    "slug": "ketegangan",
+    "url": "https://www.dracinema.com/genre/ketegangan"
+  },
+  {
+    "name": "Kisah Kembali",
+    "slug": "kisah-kembali",
+    "url": "https://www.dracinema.com/genre/kisah-kembali"
+  },
+  {
+    "name": "Komedi",
+    "slug": "komedi",
+    "url": "https://www.dracinema.com/genre/komedi"
+  },
+  {
+    "name": "Kontemporer",
+    "slug": "kontemporer",
+    "url": "https://www.dracinema.com/genre/kontemporer"
+  },
+  {
+    "name": "Kuat",
+    "slug": "kuat",
+    "url": "https://www.dracinema.com/genre/kuat"
+  },
+  {
+    "name": "Kultivasi",
+    "slug": "kultivasi",
+    "url": "https://www.dracinema.com/genre/kultivasi"
+  },
+  {
+    "name": "Kuno",
+    "slug": "kuno",
+    "url": "https://www.dracinema.com/genre/kuno"
+  },
+  {
+    "name": "Lainnya",
+    "slug": "lainnya",
+    "url": "https://www.dracinema.com/genre/lainnya"
+  },
+  {
+    "name": "Laki Laki",
+    "slug": "laki-laki",
+    "url": "https://www.dracinema.com/genre/laki-laki"
+  },
+  {
+    "name": "Lucu",
+    "slug": "lucu",
+    "url": "https://www.dracinema.com/genre/lucu"
+  },
+  {
+    "name": "Mandiri",
+    "slug": "mandiri",
+    "url": "https://www.dracinema.com/genre/mandiri"
+  },
+  {
+    "name": "Manipulatif",
+    "slug": "manipulatif",
+    "url": "https://www.dracinema.com/genre/manipulatif"
+  },
+  {
+    "name": "Manis",
+    "slug": "manis",
+    "url": "https://www.dracinema.com/genre/manis"
+  },
+  {
+    "name": "Masyarakat Kelas Atas",
+    "slug": "masyarakat-kelas-atas",
+    "url": "https://www.dracinema.com/genre/masyarakat-kelas-atas"
+  },
+  {
+    "name": "Melankolis",
+    "slug": "melankolis",
+    "url": "https://www.dracinema.com/genre/melankolis"
+  },
+  {
+    "name": "Melawan Balik",
+    "slug": "melawan-balik",
+    "url": "https://www.dracinema.com/genre/melawan-balik"
+  },
+  {
+    "name": "Membalas Dendam",
+    "slug": "membalas-dendam",
+    "url": "https://www.dracinema.com/genre/membalas-dendam"
+  },
+  {
+    "name": "Mendominasi",
+    "slug": "mendominasi",
+    "url": "https://www.dracinema.com/genre/mendominasi"
+  },
+  {
+    "name": "Mengharukan",
+    "slug": "mengharukan",
+    "url": "https://www.dracinema.com/genre/mengharukan"
+  },
+  {
+    "name": "Menghukum Penjahat",
+    "slug": "menghukum-penjahat",
+    "url": "https://www.dracinema.com/genre/menghukum-penjahat"
+  },
+  {
+    "name": "Menginspirasi",
+    "slug": "menginspirasi",
+    "url": "https://www.dracinema.com/genre/menginspirasi"
+  },
+  {
+    "name": "Menikah Kilat",
+    "slug": "menikah-kilat",
+    "url": "https://www.dracinema.com/genre/menikah-kilat"
+  },
+  {
+    "name": "Menikah Sebelum Cinta",
+    "slug": "menikah-sebelum-cinta",
+    "url": "https://www.dracinema.com/genre/menikah-sebelum-cinta"
+  },
+  {
+    "name": "Miliarder",
+    "slug": "miliarder",
+    "url": "https://www.dracinema.com/genre/miliarder"
+  },
+  {
+    "name": "Misteri",
+    "slug": "misteri",
+    "url": "https://www.dracinema.com/genre/misteri"
+  },
+  {
+    "name": "Misterius",
+    "slug": "misterius",
+    "url": "https://www.dracinema.com/genre/misterius"
+  },
+  {
+    "name": "Modern",
+    "slug": "modern",
+    "url": "https://www.dracinema.com/genre/modern"
+  },
+  {
+    "name": "Modern Urban",
+    "slug": "modern-urban",
+    "url": "https://www.dracinema.com/genre/modern-urban"
+  },
+  {
+    "name": "Naif",
+    "slug": "naif",
+    "url": "https://www.dracinema.com/genre/naif"
+  },
+  {
+    "name": "Ngasihpelajaran",
+    "slug": "ngasihpelajaran",
+    "url": "https://www.dracinema.com/genre/ngasihpelajaran"
+  },
+  {
+    "name": "Olahraga",
+    "slug": "olahraga",
+    "url": "https://www.dracinema.com/genre/olahraga"
+  },
+  {
+    "name": "Pahit Manis",
+    "slug": "pahit-manis",
+    "url": "https://www.dracinema.com/genre/pahit-manis"
+  },
+  {
+    "name": "Pahlawan Wanita Kuat",
+    "slug": "pahlawan-wanita-kuat",
+    "url": "https://www.dracinema.com/genre/pahlawan-wanita-kuat"
+  },
+  {
+    "name": "Panas",
+    "slug": "panas",
+    "url": "https://www.dracinema.com/genre/panas"
+  },
+  {
+    "name": "Paranormal",
+    "slug": "paranormal",
+    "url": "https://www.dracinema.com/genre/paranormal"
+  },
+  {
+    "name": "Patah Hati",
+    "slug": "patah-hati",
+    "url": "https://www.dracinema.com/genre/patah-hati"
+  },
+  {
+    "name": "Pelindung",
+    "slug": "pelindung",
+    "url": "https://www.dracinema.com/genre/pelindung"
+  },
+  {
+    "name": "Pembalikan Keberuntungan",
+    "slug": "pembalikan-keberuntungan",
+    "url": "https://www.dracinema.com/genre/pembalikan-keberuntungan"
+  },
+  {
+    "name": "Pemeran Utama Wanita Kuat Kelahiran Kembali",
+    "slug": "pemeran-utama-wanita-kuat-kelahiran-kembali",
+    "url": "https://www.dracinema.com/genre/pemeran-utama-wanita-kuat-kelahiran-kembali"
+  },
+  {
+    "name": "Pemeran Utama Wanita Kuat Serangan Balik",
+    "slug": "pemeran-utama-wanita-kuat-serangan-balik",
+    "url": "https://www.dracinema.com/genre/pemeran-utama-wanita-kuat-serangan-balik"
+  },
+  {
+    "name": "Pemimpin Wanita Kuat",
+    "slug": "pemimpin-wanita-kuat",
+    "url": "https://www.dracinema.com/genre/pemimpin-wanita-kuat"
+  },
+  {
+    "name": "Penebusan",
+    "slug": "penebusan",
+    "url": "https://www.dracinema.com/genre/penebusan"
+  },
+  {
+    "name": "Pengkhianatan",
+    "slug": "pengkhianatan",
+    "url": "https://www.dracinema.com/genre/pengkhianatan"
+  },
+  {
+    "name": "Penyembuhan",
+    "slug": "penyembuhan",
+    "url": "https://www.dracinema.com/genre/penyembuhan"
+  },
+  {
+    "name": "Penyesalan",
+    "slug": "penyesalan",
+    "url": "https://www.dracinema.com/genre/penyesalan"
+  },
+  {
+    "name": "Perbedaan Kelas",
+    "slug": "perbedaan-kelas",
+    "url": "https://www.dracinema.com/genre/perbedaan-kelas"
+  },
+  {
+    "name": "Percaya Diri",
+    "slug": "percaya-diri",
+    "url": "https://www.dracinema.com/genre/percaya-diri"
+  },
+  {
+    "name": "Perceraian",
+    "slug": "perceraian",
+    "url": "https://www.dracinema.com/genre/perceraian"
+  },
+  {
+    "name": "Perempuan",
+    "slug": "perempuan",
+    "url": "https://www.dracinema.com/genre/perempuan"
+  },
+  {
+    "name": "Perjalanan Waktu",
+    "slug": "perjalanan-waktu",
+    "url": "https://www.dracinema.com/genre/perjalanan-waktu"
+  },
+  {
+    "name": "Perkotaan",
+    "slug": "perkotaan",
+    "url": "https://www.dracinema.com/genre/perkotaan"
+  },
+  {
+    "name": "Pernikahan",
+    "slug": "pernikahan",
+    "url": "https://www.dracinema.com/genre/pernikahan"
+  },
+  {
+    "name": "Pernikahan Kontrak",
+    "slug": "pernikahan-kontrak",
+    "url": "https://www.dracinema.com/genre/pernikahan-kontrak"
+  },
+  {
+    "name": "Perselingkuhan",
+    "slug": "perselingkuhan",
+    "url": "https://www.dracinema.com/genre/perselingkuhan"
+  },
+  {
+    "name": "Pertumbuhan Karakter",
+    "slug": "pertumbuhan-karakter",
+    "url": "https://www.dracinema.com/genre/pertumbuhan-karakter"
+  },
+  {
+    "name": "Petualangan",
+    "slug": "petualangan",
+    "url": "https://www.dracinema.com/genre/petualangan"
+  },
+  {
+    "name": "Pewaris Wanita",
+    "slug": "pewaris-wanita",
+    "url": "https://www.dracinema.com/genre/pewaris-wanita"
+  },
+  {
+    "name": "Presiden Direktur",
+    "slug": "presiden-direktur",
+    "url": "https://www.dracinema.com/genre/presiden-direktur"
+  },
+  {
+    "name": "Putri",
+    "slug": "putri",
+    "url": "https://www.dracinema.com/genre/putri"
+  },
+  {
+    "name": "Rasa Sakit",
+    "slug": "rasa-sakit",
+    "url": "https://www.dracinema.com/genre/rasa-sakit"
+  },
+  {
+    "name": "Reinkarnasi",
+    "slug": "reinkarnasi",
+    "url": "https://www.dracinema.com/genre/reinkarnasi"
+  },
+  {
+    "name": "Rendah Hati",
+    "slug": "rendah-hati",
+    "url": "https://www.dracinema.com/genre/rendah-hati"
+  },
+  {
+    "name": "Reuni",
+    "slug": "reuni",
+    "url": "https://www.dracinema.com/genre/reuni"
+  },
+  {
+    "name": "Romansa",
+    "slug": "romansa",
+    "url": "https://www.dracinema.com/genre/romansa"
+  },
+  {
+    "name": "Romansa Gelap",
+    "slug": "romansa-gelap",
+    "url": "https://www.dracinema.com/genre/romansa-gelap"
+  },
+  {
+    "name": "Romansa Kantor",
+    "slug": "romansa-kantor",
+    "url": "https://www.dracinema.com/genre/romansa-kantor"
+  },
+  {
+    "name": "Romansa Manis",
+    "slug": "romansa-manis",
+    "url": "https://www.dracinema.com/genre/romansa-manis"
+  },
+  {
+    "name": "Romantis",
+    "slug": "romantis",
+    "url": "https://www.dracinema.com/genre/romantis"
+  },
+  {
+    "name": "Sang Juara Kembali",
+    "slug": "sang-juara-kembali",
+    "url": "https://www.dracinema.com/genre/sang-juara-kembali"
+  },
+  {
+    "name": "Sejarah",
+    "slug": "sejarah",
+    "url": "https://www.dracinema.com/genre/sejarah"
+  },
+  {
+    "name": "Serangan Balik",
+    "slug": "serangan-balik",
+    "url": "https://www.dracinema.com/genre/serangan-balik"
+  },
+  {
+    "name": "Serangan Balik Pemeran Utama Pria",
+    "slug": "serangan-balik-pemeran-utama-pria",
+    "url": "https://www.dracinema.com/genre/serangan-balik-pemeran-utama-pria"
+  },
+  {
+    "name": "Serius",
+    "slug": "serius",
+    "url": "https://www.dracinema.com/genre/serius"
+  },
+  {
+    "name": "Sistem",
+    "slug": "sistem",
+    "url": "https://www.dracinema.com/genre/sistem"
+  },
+  {
+    "name": "Suami Pelindung",
+    "slug": "suami-pelindung",
+    "url": "https://www.dracinema.com/genre/suami-pelindung"
+  },
+  {
+    "name": "Tak Bersalah",
+    "slug": "tak-bersalah",
+    "url": "https://www.dracinema.com/genre/tak-bersalah"
+  },
+  {
+    "name": "Takdir",
+    "slug": "takdir",
+    "url": "https://www.dracinema.com/genre/takdir"
+  },
+  {
+    "name": "Terkelintir",
+    "slug": "terkelintir",
+    "url": "https://www.dracinema.com/genre/terkelintir"
+  },
+  {
+    "name": "Terlahir Kembali",
+    "slug": "terlahir-kembali",
+    "url": "https://www.dracinema.com/genre/terlahir-kembali"
+  },
+  {
+    "name": "Tragedi",
+    "slug": "tragedi",
+    "url": "https://www.dracinema.com/genre/tragedi"
+  },
+  {
+    "name": "Wanita Kuat",
+    "slug": "wanita-kuat",
+    "url": "https://www.dracinema.com/genre/wanita-kuat"
+  },
+  {
+    "name": "Wanita Mandiri",
+    "slug": "wanita-mandiri",
+    "url": "https://www.dracinema.com/genre/wanita-mandiri"
+  },
+  {
+    "name": "Wanita Tangguh",
+    "slug": "wanita-tangguh",
+    "url": "https://www.dracinema.com/genre/wanita-tangguh"
+  },
+  {
+    "name": "Zaman Kuno",
+    "slug": "zaman-kuno",
+    "url": "https://www.dracinema.com/genre/zaman-kuno"
+  }
+]
