@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import { BaseScraper } from "../../core/index.js";
+import { BaseScraper, DEFAULT_USER_AGENT } from "../../core/index.js";
 import {
   DracinemaMovie,
   DracinemaGenre,
@@ -293,7 +293,7 @@ export class DracinemaScraper extends BaseScraper {
       const res = await fetch(searchUrl, {
         headers: {
           "X-API-Key": this.apiKey,
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "User-Agent": DEFAULT_USER_AGENT,
           Referer: this.baseUrl,
         },
         signal: AbortSignal.timeout(15000),
@@ -357,7 +357,7 @@ export class DracinemaScraper extends BaseScraper {
         headers: {
           "Content-Type": "application/json",
           "X-API-Key": this.apiKey,
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "User-Agent": DEFAULT_USER_AGENT,
           Referer: playUrl,
           Origin: this.baseUrl,
         },

@@ -1,3 +1,4 @@
+import { parseArgs } from "../../core/index.js";
 import { DracinemaScraper } from "./scraper.js";
 import { DracinemaStorage } from "./storage.js";
 
@@ -112,24 +113,6 @@ export function printSummary(storage: DracinemaStorage): void {
   console.log("=".repeat(60));
 }
 
-function parseArgs(args: string[]): Record<string, string | boolean | number> {
-  const parsed: Record<string, string | boolean | number> = {};
-  for (let i = 0; i < args.length; i++) {
-    const arg = args[i];
-    if (arg.startsWith("--")) {
-      const key = arg.slice(2);
-      const next = args[i + 1];
-      if (next && !next.startsWith("--")) {
-        const num = Number(next);
-        parsed[key] = isNaN(num) ? next : num;
-        i++;
-      } else {
-        parsed[key] = true;
-      }
-    }
-  }
-  return parsed;
-}
 
 export async function runCli(argv: string[] = process.argv.slice(2)): Promise<void> {
   printBanner();

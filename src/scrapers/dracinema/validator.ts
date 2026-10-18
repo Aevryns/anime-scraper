@@ -1,3 +1,4 @@
+import { cleanText, slugifyTitle } from "../../core/index.js";
 import {
   DracinemaMovie,
   DracinemaGenre,
@@ -8,26 +9,7 @@ import {
   RawStreamQuality,
 } from "./models.js";
 
-export function cleanText(str?: string | null): string {
-  if (!str) return "";
-  return str
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-export function slugifyTitle(title: string): string {
-  return title
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
+export { cleanText, slugifyTitle };
 
 export function generateDracinemaSlug(title: string, bookId?: string): string {
   const clean = slugifyTitle(title);
