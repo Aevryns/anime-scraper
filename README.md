@@ -39,7 +39,7 @@ Data yang telah terekstrak secara lengkap dan tersimpan di dalam folder [`data/`
 - 🛡️ **Built-in Validator**: Memvalidasi integritas URL, slug unik, judul, dan sanitasi metadata.
 - 🎥 **Video Stream Extractor**: Mendukung ekstraksi server video embed (B-TUBE, GDRIVE, MP4Upload, YourUpload) dan link download (GDrive, MP4).
 - 🔍 **Search Engine**: Pencarian instan berdasarkan kata kunci langsung ke katalog anime.
-- 🐍 **Dual Language Support**: Tersedia implementasi utama berbasis **Node.js / TypeScript** serta skrip alternatif berbasis **Python**.
+- 🚀 **Modern TypeScript**: Dibangun sepenuhnya menggunakan TypeScript dengan type safety penuh dan kompatibilitas ES Modules modern.
 
 ---
 
@@ -66,7 +66,6 @@ Data yang telah terekstrak secara lengkap dan tersimpan di dalam folder [`data/`
 │   └── latest_updates.json  # 159 update episode terbaru (JSON)
 ├── package.json
 ├── tsconfig.json
-├── requirements.txt     # (Opsi Python)
 └── README.md
 ```
 
