@@ -195,18 +195,5 @@ console.log(`Judul: ${anime?.title}, Total Episode: ${anime?.episodesCount}`);
 
 ---
 
-## ➕ Cara Menambahkan Scraper Baru
-
-Untuk menambahkan situs target scraper baru, buat folder di `src/scrapers/<nama-situs>/`:
-
-1. Buat `models.ts` untuk interface data.
-2. Buat `validator.ts` untuk fungsi validasi dan sanitasi data.
-3. Buat `storage.ts` dengan mewarisi `BaseStorage` dari `../../core/index.js`.
-4. Buat `scraper.ts` dengan mewarisi `BaseScraper` dari `../../core/index.js`.
-5. Buat `cli.ts` untuk menangani command line options.
-6. Daftarkan di `src/scrapers/index.ts` pada objek `scrapers`.
-
----
-
 ## 📄 Lisensi
 [MIT License](LICENSE) © 2026 [Zeltoria Aevryns](https://zeltoria.web.id)
